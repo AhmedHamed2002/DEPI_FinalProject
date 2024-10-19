@@ -1,0 +1,8 @@
+<div class=" text-center position-relative w-100" [ngClass]="{'d_bg':mode , 'bg':!mode}">
+</div>
+<a routerLink="/home" class="text btn position-fixed fs-5 pe-5 w-25" [ngClass]="{'d_text':mode , 'text':!mode}" >  GO HOME
+  <div class="w_50px h_50px position-absolute pos">
+    <img src="../../../assets/images/sprinting.png" class="w-100 h-100" [class.sprinting]="mode" alt="overly">
+  </div>
+</a>
+

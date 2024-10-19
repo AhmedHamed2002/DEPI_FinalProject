@@ -1,0 +1,65 @@
+<section class="min-vh-100" [ngClass]="{'bg_cart':mode , 'assistant2_bg':!mode}">
+
+  <div class="container payment-container p-4">
+    <div class="row mt-3">
+      <!-- Books info -->
+      <div class="col-md-6 my-3" >
+          <div class="total-price rounded-2 mt-2 p-3 p-md-4 assistant_bg overflow-x-auto"  [ngClass]="{'dark_mode d_total-price':mode , 'assistant_bg total-price':!mode}">
+            <h4 class="total-title mb-3 text-danger ms-3">Total: {{Total}} $</h4>
+            @for (book of myCartItems; track book.isbn13) {
+              <div class="product-item d-flex align-items-center mb-1" [ngClass]="{'d_product-item':mode , 'product-item':!mode}">
+                <img [src]="book.image" alt="Book 1">
+                <div class="product-details fw-bold">
+                  <p class="fw-bolder" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">{{book.title}}</p>
+                  <p [ngClass]="{'gold_color':mode , 'dark_color':!mode}">Quantity: {{book.quantity}} </p>
+                  <p class=" rounded-3 gold_color price p-1" [ngClass]="{'bg-secondary-subtle':mode , 'main_bg':!mode}">$ {{book.totalPrice}}</p>
+                </div>
+              </div>
+            }
+          </div>
+      </div>
+
+    <!-- Payment Form -->
+    <div class="col-md-6 pt-3 card rounded-3 form-card mt-3" [ngClass]="{'dark_mode':mode , 'bg-white':!mode}">
+      <form class="payment-form">
+        <div class="mb-3">
+          <label for="email" class="form-label fw-bold" [ngClass]="{'gold_color':mode , 'main_color':!mode}">Email</label>
+          <input type="email" class="form-control shadow-none" id="email" placeholder="Email" autocomplete="active">
+        </div>
+
+        <div class="mb-3">
+          <label for="visa-number" class="form-label fw-bold" [ngClass]="{'gold_color':mode , 'main_color':!mode}">Card Information</label>
+          <div class="card-info d-flex">
+            <input type="text" class="form-control shadow-none" name="M/Y" placeholder="MM / YY" maxlength="5" required>
+            <input type="number" class="form-control shadow-none" name="CVC" placeholder="CVC" maxlength="3" required>
+            <input id="visa-number" type="number" class="form-control shadow-none" name="visa-number" placeholder="1234 1234 1234 1234" required>
+          </div>
+          <div class="mt-2 row rounded-3">
+            <img loading="lazy" class="col-7 col-md-6 col-lg-5 mx-auto" src="../../../assets/images/payment.png" alt="Visa" width="160">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="card-name" class="form-label fw-bold" [ngClass]="{'gold_color':mode , 'main_color':!mode}">Name on Card</label>
+          <input type="text" class="form-control shadow-none" id="card-name" placeholder="Name on card" required>
+        </div>
+
+        <label for="country" class="form-label fw-bold" [ngClass]="{'gold_color':mode , 'main_color':!mode}">Country or region</label>
+        <select class="form-select shadow-none" id="country" required autocomplete="active">
+          <option selected>Egypt</option>
+          <option value="1">United States</option>
+          <option value="2">Canada</option>
+          <option value="3">United Kingdom</option>
+          <option value="4">Australia</option>
+        </select>
+
+        <div class="mb-1">
+          <input type="number" class="form-control mt-3 shadow-none" name="zip" placeholder="ZIP" required>
+        </div>
+        <button type="submit" class="btn  w-100 fw-bold mt-2" [ngClass]="{'btn-warning':mode , 'pay-button':!mode}">Pay</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+</section>

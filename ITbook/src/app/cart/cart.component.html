@@ -1,0 +1,98 @@
+<section class="min-vh-100" *ngIf="myCartItems.length > 0 else empty" [ngClass]="{'bg_cart':mode , 'assistant2_bg':!mode}">
+  <div class="container pt-5">
+    <div class="table-responsive d-none d-md-block">
+      <table class="table">
+        <thead>
+          <tr class="text-center">
+            <th class="gold_color" [ngClass]="{'dark_mode':mode , 'dark_bg':!mode}">Item</th>
+            <th class="gold_color prices-column" [ngClass]="{'dark_mode':mode , 'dark_bg':!mode}">Price</th>
+            <th class="gold_color" [ngClass]="{'dark_mode':mode , 'dark_bg':!mode}">Quantity</th>
+            <th class="gold_color total-column" [ngClass]="{'dark_mode':mode , 'dark_bg':!mode}">Total Price</th>
+            <th class="gold_color" [ngClass]="{'dark_mode':mode , 'dark_bg':!mode}">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (book of myCartItems; track book.isbn13) {
+            <tr class=" align-middle" >
+              <td class="">
+                <div class="d-flex align-items-center" [routerLink]="['/book' , book.isbn13]">
+                  <img loading="lazy" src="{{book.image}}" alt="{{book.title}}" class="img-thumbnail me-5" style="max-width: 120px;" >
+                  <span class="fs-5 fw-bold" [ngClass]="{'gold_color':mode , 'main_color':!mode}">{{book.title}}</span>
+                </div>
+              </td>
+              <td class="prices-column" [ngClass]="{'text-dark':mode , 'dark_color':!mode}" [routerLink]="['/book' , book.isbn13]">
+                <p class="m-0 fw-bold"><i class="fa-solid fa-sack-dollar"></i> {{book.price}}</p>
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <button class="btn btn-secondary btn-sm" (click)="removeItemBookToCart(book)">-</button>
+                  <span class="mx-2" >{{book.quantity}}</span>
+                  <button class="btn btn-secondary btn-sm" (click)="addBookToCart(book)">+</button>
+                </div>
+              </td>
+              <td class="total-column" [ngClass]="{'gold_color':mode , 'dark_color':!mode}" [routerLink]="['/book' , book.isbn13]">
+                <p class="m-0 fw-bold"><i class="fa-solid fa-sack-dollar"></i> ${{book.totalPrice}}</p>
+              </td>
+              <td>
+                <button class="btn btn-danger" (click)="removeBookToCart(book)">
+                  <i class="fa-solid fa-trash"></i> Remove
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-block d-md-none">
+      @for (book of myCartItems; track book.isbn13) {
+        <div class="card mb-3 even"  [ngClass]="{'dark_mode':mode , 'assistant_bg':!mode}">
+          <div class="rounded-1" [ngClass]="{'d_card-body':mode , 'card-body':!mode}">
+            <div class="row align-items-center">
+              <div class="col-4" [routerLink]="['/book' , book.isbn13]">
+                <img loading="lazy" src="{{book.image}}" alt="{{book.title}}" class="img-thumbnail" style="max-width: 120px;">
+              </div>
+              <div class="col-5" [routerLink]="['/book' , book.isbn13]">
+                <span class="dark_color fs-5" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">{{book.title}}</span>
+              </div>
+              <div class="col-3 text-center">
+                <button class="btn btn-danger btn-sm" (click)="removeBookToCart(book)">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-6 mb-3" [ngClass]="{'gold_color':mode , 'dark_color':!mode}" [routerLink]="['/book' , book.isbn13]">
+                <p class="m-0 fw-bold">Price:  <i class="fa-solid fa-sack-dollar ms-2"></i> {{book.price}}</p>
+              </div>
+              <div class="col-6 d-flex justify-content-end">
+                <div class="d-flex align-items-center">
+                  <button class="btn btn-sm text-black-50" [ngClass]="{'bg-secondary-subtle':mode , 'main_bg':!mode}"  (click)="removeItemBookToCart(book)">-</button>
+                  <span class="mx-2 gold_color">{{book.quantity}}</span>
+                  <button class="btn  btn-sm text-black-50" [ngClass]="{'bg-secondary-subtle':mode , 'main_bg':!mode}" (click)="addBookToCart(book)">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 w-75 " [ngClass]="{'gold_color':mode , 'dark_color':!mode}" [routerLink]="['/book' , book.isbn13]">
+                <p class="m-0 fw-bold">Total: <span class="main_bg p-2 gold_color rounded-3 ms-2" [ngClass]="{'bg-secondary-subtle':mode , 'main_bg':!mode}"><i class="fa-solid fa-sack-dollar"></i> ${{book.totalPrice}}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="row mt-3" routerLink='/payment'>
+      <h5 class="final-total col-2 w-50  rounded-4 py-2 text-center mx-auto text-end fw-bold gold_color" [ngClass]="{'bg-secondary-subtle':mode , 'dark_bg':!mode}">
+        <span class="total-price"><i class="fa-solid fa-sack-dollar" ></i> Buy  : {{Total}}$</span>
+      </h5>
+    </div>
+  </div>
+</section>
+
+<ng-template #empty >
+  <div class="text-muted w-100 vh-100 d-flex justify-content-center align-items-center fs-2 assistant2_bg">
+    <p>There are no items here.</p>
+  </div>
+</ng-template>

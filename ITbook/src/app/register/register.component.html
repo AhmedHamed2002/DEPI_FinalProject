@@ -1,0 +1,49 @@
+<div class="container-fluid assistant2_bg min-vh-100 d-flex align-items-center justify-content-center" [ngClass]="{'dark_mode':mode , 'bg-secondary-subtle':!mode}">
+    <div class="card shadow-lg" style="max-width: 400px;" [ngClass]="{'bg_register':mode , 'bg-white':!mode}">
+      <div class="card-body p-5">
+        <h2 class="card-title text-center mb-4 font_1" [ngClass]="{'gold_color':mode , ' main_color':!mode}">Register</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="username" class="form-label" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">Username</label>
+            <input type="text" class="form-control shadow-none" id="username" formControlName="username" required>
+            <div *ngIf="form.get('username')?.invalid && (form.get('username')?.dirty || form.get('username')?.touched)" class="text-danger mt-1">
+              <div *ngIf="form.get('username')?.errors?.['required']">Username is required.</div>
+              <div *ngIf="form.get('username')?.errors?.['minlength']">Username must be at least 3 characters long.</div>
+              <div *ngIf="form.get('username')?.errors?.['maxlength']">Username cannot exceed 20 characters.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label " [ngClass]="{'gold_color':mode , 'dark_color':!mode}">Email address</label>
+            <input type="email" class="form-control shadow-none" id="email" formControlName="email" required>
+            <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)" class="text-danger  mt-1">
+              <div *ngIf="form.get('email')?.errors?.['required']">Email is required.</div>
+              <div *ngIf="form.get('email')?.errors?.['email']">Please enter a valid email address.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">Password</label>
+            <input type="password" class="form-control shadow-none" id="password" formControlName="password" required>
+            <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)" class="text-danger  mt-1">
+              <div *ngIf="form.get('password')?.errors?.['required']">Password is required.</div>
+              <div *ngIf="form.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</div>
+              <div *ngIf="form.get('password')?.errors?.['passwordStrength']">Password must contain at least one uppercase letter, one lowercase letter, and one number.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">Confirm Password</label>
+            <input type="password" class="form-control shadow-none" id="confirmPassword" formControlName="confirmPassword" required>
+            <div *ngIf="form.get('confirmPassword')?.invalid && (form.get('confirmPassword')?.dirty || form.get('confirmPassword')?.touched)" class="text-danger mt-1">
+              <div *ngIf="form.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</div>
+            </div>
+            <div *ngIf="form.errors?.['passwordMismatch'] && (form.get('confirmPassword')?.dirty || form.get('confirmPassword')?.touched)" class="text-danger  mt-1">
+              Passwords do not match.
+            </div>
+          </div>
+          <button type="submit" class="btn w-100" [ngClass]="{'btn-outline-warning':mode , 'btn-outline-primary':!mode}" [disabled]="form.invalid">Register</button>
+        </form>
+        <p class="mt-3 text-center" [ngClass]="{'text-white-50':mode , 'dark_color':!mode}">
+          Already have an account? <a routerLink="/login" [ngClass]="{'gold_color':mode , 'main_color':!mode}">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>

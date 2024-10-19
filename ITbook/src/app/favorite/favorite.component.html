@@ -1,0 +1,47 @@
+<section class="assistant2_bg" [ngClass]="{'bg_books':mode , 'assistant2_bg':!mode}" *ngIf="myFavoriteItems.length > 0 else empty">
+
+  <div class="container py-5 min-vh-100  ">
+    <div>
+      <h2 class="font_3 my-5 py-5 text-center text-md-start" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">my Favorite</h2>
+    </div>
+
+    <div class="row">
+      @for (book of myFavoriteItems; track book.isbn13 ) {
+        <div class="col-10 mx-auto mx-md-0 col-sm-6 col-lg-4">
+          <div class="Card mb-5 border border-1 rounded-2">
+
+            <div class="bg_card w-100 h_400px shadow-sm rounded-2 position-relative d-flex justify-content-center align-items-center">
+
+              @if (book.price =="$0.00") {
+                <div class="position-absolute T start-0 h_40px ms-3">
+                  <img loading="lazy" src="../../../assets/images/free.png" alt="free" class="h-100">
+                </div>
+              }
+
+              <button type="button" class="btn-close position-absolute top-0 end-0 m-2 shadow-none" aria-label="Close" (click)="removeBookToFavorite(book)"></button>
+
+              <img loading="lazy" src="{{book.image}}" alt="Book_Image" class="w-100 h-100">
+
+              <div class="cardText rounded-3 d-flex justify-content-center align-items-center text-center flex-column position-absolute ">
+                <h5 class="font_1 mb-5 text-white mb-3 h_50px ">{{book.title}}</h5>
+                <div class="w-100 d-flex justify-content-center align-items-center flex-column">
+                  @if(book.price !="$0.00"  && logined){
+                    <button class="btn  w-75" [ngClass]="{'d_b':mode , 'b':!mode}" (click)="addBookToCart(book)">Add to cart</button>
+                  }
+                  <button class="btn btn-outline-warning mt-3 w-75" [routerLink]="['/book' , book.isbn13]">Details</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<ng-template #empty >
+  <div class="text-muted w-100 vh-100 d-flex justify-content-center align-items-center fs-2 assistant2_bg">
+    <p>There are no items here.</p>
+  </div>
+</ng-template>

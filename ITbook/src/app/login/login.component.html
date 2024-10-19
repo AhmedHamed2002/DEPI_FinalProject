@@ -1,0 +1,31 @@
+<div class="container-fluid  min-vh-100 d-flex align-items-center justify-content-center" [ngClass]="{'dark_mode':mode , 'bg-secondary-subtle':!mode}">
+    <div class="card shadow-lg" style="max-width: 400px;" [ngClass]="{'bg_login':mode , 'bg-white':!mode}">
+      <div class="card-body p-5">
+        <h2 class="card-title text-center mb-4 font_1 main_color" [ngClass]="{'gold_color':mode , ' main_color':!mode}">Login</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="email" class="form-label" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">Email address</label>
+            <input autocomplete="on" type="email" class="form-control shadow-none" id="email" formControlName="email" required>
+            <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)" class="text-danger mt-1">
+              <div *ngIf="form.get('email')?.errors?.['required']">Email is required.</div>
+              <div *ngIf="form.get('email')?.errors?.['email']">Please enter a valid email address.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">Password</label>
+            <input autocomplete="on" type="password" class="form-control shadow-none" id="password" formControlName="password" required>
+            <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)" class="text-danger">
+              Password is required.
+            </div>
+          </div>
+          <div *ngIf="loginError" class="text-danger mt-1 mb-4">
+            {{ loginError }}
+          </div>
+          <button type="submit" class="btn w-100 "  [ngClass]="{'btn-outline-warning':mode , 'btn-outline-primary':!mode}" [disabled]="form.invalid">Login</button>
+        </form>
+        <p class="mt-3 text-center" [ngClass]="{'text-white-50':mode , 'dark_color':!mode}">
+          Don't have an account? <a routerLink="/register"[ngClass]="{'gold_color':mode , 'main_color':!mode}" style="cursor: pointer;">Register</a>
+        </p>
+      </div>
+    </div>
+</div>

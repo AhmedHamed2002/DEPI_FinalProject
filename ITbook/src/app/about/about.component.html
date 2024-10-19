@@ -1,0 +1,98 @@
+<div class=" pt-5 text-center" [ngClass]="{'bg_about':mode , 'assistant2_bg':!mode}">
+
+  <div class="row text-center mt-5 container mx-auto">
+    <div class="col-12 col-md-6 mb-4">
+        <div class="mb-5">
+          @if (!mode) {
+            <app-image loading="lazy"></app-image>
+          }
+          @else {
+            <app-dark-image loading="lazy"></app-dark-image>
+          }
+        </div>
+    </div>
+    <div class="col-12 col-md-6 mb-4">
+      <div class="d-flex h-100 justify-content-center align-items-center flex-column">
+        <h3 class=" mb-5 fs-1 fw-1 font_3" [ngClass]="{'gold_color':mode , 'main_color':!mode}">The Importance of Reading</h3>
+        <p class="font_4 text-center text-md-start " [ngClass]="{'text-white-50':mode , 'text-muted':!mode}">
+            Reading is essential for personal and professional growth. It not only enhances your knowledge but also helps you stay updated with the latest trends in programming and technology.
+            Our library offers a diverse range of books that cater to different skill levels, enabling both beginners and experienced developers to deepen their understanding and hone their skills.
+        </p>
+        <p class="font_4 text-center text-md-start"  [ngClass]="{'text-white-50':mode , 'text-muted':!mode}">
+            Whether you are looking to learn a new programming language or improve your existing skills, our collection is designed to support you on your journey towards becoming a proficient programmer.
+            By embracing reading, you open doors to new opportunities and possibilities in your career.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center justify-items-center mt-3">
+    <hr class="  line"  [ngClass]="{'gold_color':mode , 'dark_color':!mode}">
+    <span class="an"  [ngClass]="{'gold_color':mode , 'dark_color':!mode}"><i class="fas fa-book fs-2"></i></span>
+    <hr class="line"  [ngClass]="{'gold_color':mode , 'dark_color':!mode}">
+  </div>
+
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-12 col-lg-4">
+        <div class="mb-4 bg-secondary-subtle py-3 px-4 rounded-2 shadow-sm h-260px move">
+          <h3 class="font_1 mb-4 fw-1 fs-2 text-center"  [ngClass]="{'gold_color':mode , 'main_color':!mode}"><i class="fas fa-book-open"></i> Welcome</h3>
+          <p class="text-muted text-center text-md-start">Our goal is to provide a comprehensive library containing specialized books on various programming languages, helping programmers of all levels find the right resources.</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="mb-4 bg-secondary-subtle py-3 px-4 rounded-2 shadow-sm h-260px move">
+          <h3 class="font_1 mb-4 fw-1 fs-2 text-center" [ngClass]="{'gold_color':mode , 'main_color':!mode}"><i class="fas fa-bullseye"></i> Our Goal</h3>
+          <p class="text-muted text-center text-md-start">We aim to support developers and programmers by offering high-quality books that cover both the basics and advanced techniques in different programming languages such as JavaScript, Python, Java, and more.</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4 mb-4">
+        <div class="mb-4 bg-secondary-subtle py-3 px-4 rounded-2 shadow-sm h-260px move">
+          <h3 class="font_1 mb-4 fw-1 fs-2 text-center" [ngClass]="{'gold_color':mode , 'main_color':!mode}"><i class="fas fa-cogs"></i> Technology Used</h3>
+          <p class="text-muted text-center text-md-start">We use the latest technologies in the design and development of this website to ensure the best possible user experience.</p>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div>
+  <h3 class="card-color fw-1 fs-1 mt-5 font_6">Our Team</h3>
+  <p class=" fw-1 fs-4 font_1 gold_color" >Front End Developer using Angular | Part of DEPI | ITC Company</p>
+  <hr class="card-color my-5 ">
+
+  <div class="container ">
+    <div class="row">
+      <div *ngFor="let member of team" class="col-12 col-md-6 col-lg-4 mb-5  ">
+        <div class="card text-white-50" [ngClass]="{'dark_mode':mode , 'bg_card':!mode}">
+          <div class="card-body p-3">
+            <h5 class="card-title fs-3 font_1">
+                <i [class]="member.icon" class=" gold_color me-3"></i>
+                {{ member.name }}
+            </h5>
+            <p class="card-text" [ngClass]="{'text-white':mode , 'main_color':!mode}" >{{ member.role }}</p>
+            <div class="d-flex space-around justify-content-center py-3">
+              <a *ngIf="member.portfolio" [href]="member.portfolio" title="portfolio" class="move">
+                <i class="fa-solid fa-address-book  gold_color fs-4  me-3"></i>
+              </a>
+              <a *ngIf="member.linkedin" [href]="member.linkedin" title="linkedin" class="move">
+                <i class="fab fa-linkedin gold_color fs-4 me-3"></i>
+              </a>
+              <a *ngIf="member.github" [href]="member.github" title="github" class="move">
+                <i class="fab fa-github gold_color fs-4 me-3"></i>
+              </a>
+              <a [href]="'mailto:' + member.email" title="email" class="move">
+                <i class="fas fa-envelope gold_color fs-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+

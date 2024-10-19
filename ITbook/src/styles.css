@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Qwitcher+Grypen:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Leckerli+One&display=swap');
+
+:root{
+  --main_color: #3F72AF ;
+  --assistant_color:#b1c4e9 ;
+  --assistant2_color:#fdfaf6e1 ;
+  --dark_color:#123b69 ;
+  --black_color:rgb(37, 36, 36);
+  --dark_mode:rgb(33, 31, 31) ;
+  --font_1: "Playfair Display", serif;
+  --font_2: "Qwitcher Grypen", cursive;
+  --font_3: "Edu AU VIC WA NT Guides", cursive;
+  --font_4: cursive;
+  --font_5: "Charm", cursive;
+  --font_6: "Leckerli One", cursive;
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* main colors */
+.main_color{
+  color: var(--main_color) !important;
+}
+.main_bg{
+  background-color: var(--main_color) !important;
+}
+.assistant_color{
+  color: var(--assistant_color) !important;
+}
+.assistant_bg{
+  background-color: var(--assistant_color) !important;
+}
+.assistant2_bg{
+  background-color: var(--assistant2_color) !important;
+}
+.dark_color{
+  color: var(--dark_color) !important;
+}
+.dark_bg{
+  background-color: var(--dark_color) !important;
+}
+.gold_color{
+  color: goldenrod !important;
+}
+.gold_bg{
+  background-color: goldenrod !important;
+}
+.dark_mode{
+  background-color: var(--dark_mode) !important;
+}
+
+/* main font */
+.font_1{
+  font-family: var(--font_1) !important;
+}
+.font_2{
+  font-family: var(--font_2) !important;
+}
+.font_3{
+  font-family: var(--font_3) !important;
+}
+.font_4{
+  font-family: var(--font_4) !important;
+}
+.font_5{
+  font-family: var(--font_5) !important;
+}
+.font_6{
+  font-family: var(--font_6) !important;
+}

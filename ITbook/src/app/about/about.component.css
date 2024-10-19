@@ -1,0 +1,74 @@
+.h-260px{
+height: 260px;
+}
+
+.bg_about{
+  background-color: rgb(45, 43, 43);
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  margin: 0 10px;
+}
+.an{
+animation: moving 2s linear infinite;
+}
+
+.move{
+transition: 1.2s;
+cursor: pointer
+;
+  &:hover{
+    transform: scale(1.1);
+  }
+}
+
+.card-color{
+  color:goldenrod;
+}
+.card{
+  box-shadow: 0 3px 10px #353636 ;
+  transition: 1.2s;
+  cursor: pointer;
+}
+.bg_card{
+  background-color: #272829e8;
+}
+.d_bg_card{
+  background-color: #272829e8;
+}
+.card::before,.card::before{
+  content: '';
+  position: absolute;
+  background-color: goldenrod;
+}
+.card::before {
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 60px;
+}
+.card::after {
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  height: 60px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 10px goldenrod ;
+}
+
+@keyframes moving {
+  0%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(-10px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}

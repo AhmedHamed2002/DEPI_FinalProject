@@ -1,0 +1,109 @@
+<section [ngClass]="{'bg_books':mode , 'assistant2_bg':!mode}">
+  <div class="container py-5 min-vh-100  ">
+    <div class="d-flex justify-content-center align-items-center flex-column flex-md-row pb-5">
+      <div class=" py-3 text-center w-75 m-auto ">
+        <input type="search" (input)="search(dataForm)" [(ngModel)]="dataForm" class="form-control placeholder-sm rounded-4 ps-5 shadow-none" [ngClass]="{'gold_color':mode , 'main_color':!mode}" name="search" id="searchID" placeholder="Search by book, author or product....">
+      </div>
+
+      <div class="dropdown mx-0 mx-md-5 mt-4 mt-md-0 text-center">
+        <button class="btn" [ngClass]="{'d_dropdown-toggle':mode , 'dropdown-toggle':!mode}" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Gategories
+        </button>
+        <ul class="dropdown-menu " [ngClass]="{'assistant2_bg':mode , 'assistant_bg':!mode}" aria-labelledby="dropdownMenuButton1">
+          <li *ngFor="let category of categories"><a class="dropdown-item" (click)="searchByCategory(category)">{{category}}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    @if (mybook == undefined || mybook.length == 0 || dataForm == "") {
+      @if(books.length > 0) {
+        <div>
+          <h2 class="font_3 my-5 py-5 text-center text-md-start" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">New Collection</h2>
+        </div>
+
+        <div class="row">
+          @for (book of books; track book.isbn13 ) {
+            <div class="col-10 mx-auto mx-md-0 col-sm-6 col-lg-4">
+              <div class="Card mb-5 border border-1 rounded-2">
+
+                <div class="bg_card w-100 h_400px shadow-sm rounded-2 position-relative d-flex justify-content-center align-items-center">
+
+                  @if (book.price =="$0.00") {
+                    <div class="position-absolute T start-0 h_40px ms-3">
+                      <img loading="lazy" src="../../../assets/images/free.png" alt="free" class="h-100">
+                    </div>
+                  }
+                  <i class="save fs-4 gold_color position-absolute top-0 end-0 m-2 fa-regular fa-heart" (click)="addBookToFavorite(book)"></i>
+                  @if(find(book)){
+                    <i class="save fs-2 gold_color position-absolute top-0 end-0 my-1 mx-2 fa-solid fa-heart" (click)="removeBookToFavorite(book)"></i>
+                  }
+                  <img loading="lazy" src="{{book.image}}" alt="Book_Image" class="w-100 h-100">
+
+                  <div class="cardText rounded-3 d-flex justify-content-center align-items-center text-center flex-column position-absolute ">
+                    <h5 class="font_1 mb-5 text-white mb-3 h_50px ">{{book.title}}</h5>
+                    <div class="w-100 d-flex justify-content-center align-items-center flex-column">
+                      @if (book.price !="$0.00" && logined) {
+                      <button class="btn w-75" [ngClass]="{'d_b':mode , 'b':!mode}" (click)="addBookToCart(book)">Add to cart</button>
+                      }
+                      <button class="btn btn-outline-warning mt-3 w-75" [routerLink]="['/book' , book.isbn13]">Details</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+      @else {
+        <app-loading></app-loading>
+      }
+    }
+    @else {
+      @if(mybook.length > 0) {
+        <div>
+          <h2 class="font_3 my-5 pb-5 text-center text-md-start"  [ngClass]="{'gold_color':mode , 'dark_color':!mode}">For You</h2>
+        </div>
+
+        <div class="row">
+          @for (b of mybook; track b.isbn13 ) {
+            <div class="col-10 mx-auto mx-md-0 col-sm-6 col-lg-4">
+              <div class="Card mb-5 border rounded-2">
+
+                <div class="w-100 h_400px shadow-sm rounded-2 position-relative bg-white d-flex justify-content-center align-items-center">
+
+                  @if (b.price =="$0.00") {
+                    <div class="position-absolute T start-0 h_40px ms-3">
+                      <img src="../../../assets/images/free.png" alt="free" class="h-100">
+                    </div>
+                  }
+
+                  <i class="save fs-4 gold_color position-absolute top-0 end-0 m-2 fa-regular fa-heart" (click)="addBookToFavorite(b)"></i>
+                  @if(find(b)){
+                    <i class="save fs-2 gold_color position-absolute top-0 end-0 my-1 mx-2 fa-solid fa-heart" (click)="removeBookToFavorite(b)"></i>
+                  }
+                  <img src="{{b.image}}" alt="Book_Image" class="w-100 h-100">
+
+                  <div class="cardText rounded-3 d-flex justify-content-center align-items-center text-center flex-column position-absolute ">
+                    <h5 class="font_1 mb-5 text-white mb-3 h_50px ">{{b.title}}</h5>
+                    <div class="w-100 d-flex justify-content-center align-items-center flex-column">
+                      @if (b.price !="$0.00" && logined) {
+                      <button class="btn w-75" [ngClass]="{'d_b':mode , 'b':!mode}" (click)="addBookToCart(b)">Add to cart</button>
+                      }
+                      <button class="btn btn-outline-warning mt-3 w-75" [routerLink]="['/book' , b.isbn13]">Details</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          }
+        </div>
+      }
+      @else{
+        <app-loading></app-loading>
+      }
+    }
+  </div>
+</section>

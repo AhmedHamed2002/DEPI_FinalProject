@@ -1,0 +1,58 @@
+<section [ngClass]="{'bg_books':mode , 'assistant2_bg':!mode}">
+<div class="container p-5">
+  <div class="row" *ngIf="details">
+    <div class="col-md-5 text-center text-lg-start mb-4">
+      <img [src]="details.image" [alt]="details.title" class="img-fluid rounded book-cover">
+      <h3 class="font_2 fw-bold main_color mb-5 ms-md-3 ms-lg-5 " [ngClass]="{'gold_color':mode , 'main_color':!mode}">{{details.authors}}</h3>
+    </div>
+    <div class="col-md-7 text-center">
+      <h1 class="font_1 dark_color mb-5" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">{{details.title}}</h1>
+      <h3 class="font_5 main_color mb-5" [ngClass]="{'gold':mode , 'main_color':!mode}">{{details.authors}}</h3>
+      <p class="font_5 mb-4" [ngClass]="{'text-white-50':mode , 'text-black':!mode}">{{details.desc}}</p>
+      <div class="d-md-flex align-items-center mb-4">
+        @if (details.price != "$0.00") {
+          <span class="font_6 gold_color fs-3 me-4">{{details.price}}</span>
+        }
+        @else {
+          <span class="font_5 gold_color fs-3 mx-4">$ free</span>
+        }
+        <div>
+          <button class="btn me-2 mt-3 mt-md-1" [ngClass]="{' btn-outline-warning':mode , 'btn-outline-secondary':!mode}" (click)="toggleFavorite(details)">
+            <i class="fa" [ngClass]="{'fa-heart': isFavorite(details), 'fa-heart-o': !isFavorite(details)}"></i>
+            {{isFavorite(details) ? 'Remove from Favorite' : 'Add to Favorite'}}
+          </button>
+          @if (details.price != "$0.00"  && logined) {
+            <button class="btn text-white mt-3 mt-md-1" [ngClass]="{'d_b':mode , 'b':!mode}" (click)="addBookToCart(details)">Add to Cart</button>
+          }
+          <a [href]="details.url">
+            <button class="btn text-white mt-3 ms-2 mt-md-1" [ngClass]="{'btn-warning':mode , 'btn-secondary':!mode}" >More details</button>
+          </a>
+        </div>
+      </div>
+      <div class="book-details text-start" [ngClass]="{'bg_gold':mode , 'assistant_bg':!mode}">
+        <h4 class="font_3  mb-3" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">Book Details</h4>
+        <p class="fw-bold">Publisher: <span class="font_2 fs-2">{{details.publisher}}</span></p>
+        <p class="fw-bold">Publication Year: <span>{{details.year}}</span> </p>
+        <p class="fw-bold">Pages: <span>{{details.pages}}</span> </p>
+        <p>
+          <strong>Rating: </strong>
+          <span class="star-rating">
+              <i class="fas fa-star" [ngClass]="{'filled': details.rating >= 1}"></i>
+              <i class="fas fa-star" [ngClass]="{'filled': details.rating >= 2}"></i>
+              <i class="fas fa-star" [ngClass]="{'filled': details.rating >= 3}"></i>
+              <i class="fas fa-star" [ngClass]="{'filled': details.rating >= 4}"></i>
+              <i class="fas fa-star" [ngClass]="{'filled': details.rating >= 5}"></i>
+            </span>
+        </p>
+        <p><strong>Subtitle:</strong> {{details.subtitle}}</p>
+      </div>
+      <div *ngIf="details.pdf" class="mt-4">
+        <h4 class="font_3  mb-3" [ngClass]="{'gold_color':mode , 'dark_color':!mode}">Sample Chapters</h4>
+        <ng-container *ngFor="let chapter of details.pdf | keyvalue">
+          <a [href]="chapter.value" class="btn  my-2 me-2" [ngClass]="{'btn-warning':mode , 'b':!mode}" target="_blank">{{chapter.key}}</a>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+</section>

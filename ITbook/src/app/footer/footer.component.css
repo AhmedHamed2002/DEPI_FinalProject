@@ -1,0 +1,31 @@
+.h_70px{
+  height: 70px;
+}
+
+.w_80px{
+  width: 80px;
+}
+
+.d_bg_footer{
+  background-color: rgb(37, 36, 36) ;
+  border: 2px solid goldenrod;
+}
+
+li{
+  transition: 1.2s;
+  cursor: pointer;
+
+  &:hover{
+    transform: scale(0.9);
+    color: goldenrod !important;
+  }
+}
+
+.chat
+{
+  transition: 1.2s;
+
+  &:hover{
+    color: antiquewhite !important;
+  }
+}

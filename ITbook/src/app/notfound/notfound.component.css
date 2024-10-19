@@ -1,0 +1,56 @@
+.bg{
+  background-image: url('../../../public/assets/images/notfound.png') !important;
+  background-position: center !important;
+  background-size: 100% 100% !important;
+  height: 100vh;
+}
+.d_bg{
+  background-image: url('../../../public/assets/images/notfound.png') !important;
+  background-position: center !important;
+  background-size: 100% 100% !important;
+  height: 100vh;
+  filter:  hue-rotate(206deg) brightness(0.9) ;
+}
+.text{
+  color: var(--dark_color);
+  border: 2px solid white;
+  box-shadow: 0 8px 20px rgb(11, 11, 95);
+  left: 10px;
+  bottom: 30px;
+  transition: all;
+  &:hover{
+    background-color: var(--dark_color) ;
+    color:white !important;
+  }
+}
+.d_text{
+  background-color: rgb(31, 30, 28);
+  color: goldenrod;
+  border: 2px solid white;
+  box-shadow: 0 8px 20px goldenrod;
+  left: 10px;
+  bottom: 30px;
+  z-index: 1;
+  transition: all;
+  &:hover{
+    background-color: black !important ;
+    color:gold !important;
+  }
+}
+
+.sprinting{
+  filter:  hue-rotate(180deg) brightness(1) ;
+}
+.w_50px{
+  width: 80px;
+}
+.h_50px{
+  height: 80px;
+}
+
+.pos{
+  top:-30px ;
+  right: -30px;
+}
+
+

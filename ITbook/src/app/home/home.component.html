@@ -1,0 +1,53 @@
+<header class="w-100 vh-100 d-flex align-items-center">
+  <div class="bg_header d-flex justify-content-center align-items-center flex-column w-60 h-50 z-2 rounded-end-5">
+    <div class="w-100 px-5 text-md-center">
+      <h1 class="font_1 display-1 mb-5 " [ngClass]="{'d_text_header':mode , 'text_header':!mode}">New to <br> Reading </h1>
+      <button class="btn w-50 mt-3 fs-5" routerLink="/books" [ngClass]="{'d_b':mode , 'b':!mode}"> Start </button>
+    </div>
+  </div>
+</header>
+
+<div  [ngClass]="{'dark_mode':mode , 'bg-white':!mode}">
+  <div class="row text-center pt-5 container mx-auto">
+    <div class="col-12 col-md-6 mb-4 " [ngClass]="{'gold_bg':mode , 'dark_bg':!mode}">
+      <div class="mb-5 w-100 h-100 d-none d-md-block">
+        <img loading="lazy" src="../../../assets/images/Laptop.jpg" alt="loptop_Image" class="w-100 h-100">
+      </div>
+    </div>
+  <div class="col-12 col-md-6 mb-4">
+    <div class="d-flex h-100 justify-content-center align-items-center flex-column ms-3">
+      <h2 class="mb-5 fs-1 fw-1 font_5" [ngClass]="{'gold_color':mode , 'main_color':!mode}">The Importance of Reading</h2>
+      <p class="font_4 text-center text-md-start"  [ngClass]="{'text-white-50':mode , ' text-muted':!mode}">
+        Reading is essential for personal and professional growth. It not only enhances your knowledge but also helps you stay updated with the latest trends in programming and technology.
+        Our library offers a diverse range of books that cater to different skill levels, enabling both beginners and experienced developers to deepen their understanding and hone their skills.
+      </p>
+      <p class="font_4 text-center text-md-start" [ngClass]="{'text-white-50':mode , ' text-muted':!mode}">
+        Whether you are looking to learn a new programming language or improve your existing skills, our collection is designed to support you on your journey towards becoming a proficient programmer.
+        By embracing reading, you open doors to new opportunities and possibilities in your career.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
+<section class="font_1 py-4" [ngClass]="{'d_carousel':mode , 'carousel':!mode}">
+  <div class="py-4">
+    <div class="container py-5 d-flex justify-content-center align-items-center flex-column">
+      <div class="mb-4">
+        <h2 class="mb-5 fs-1 font_5 " [ngClass]="{'gold_color':mode , 'main_color':!mode}">Categories</h2>
+      </div>
+      <div class="scene py-5">
+        <div class="gallery" style="--total: {{ images.length }}">
+          <div class="image" [ngClass]="{'d_bord':mode , 'bord':!mode}" *ngFor="let image of images; let i = index" style="--i: {{ i + 1 }}">
+            <img loading="lazy" [src]="image.src" alt="image" >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
+
+
+
+

@@ -1,0 +1,109 @@
+@if (logined){
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow_color position-sticky top-0 z-3" [ngClass]="{'d_bg_navbar':mode , 'bg_navbar':!mode}">
+  <div class="container">
+    <a class="navbar-brand" routerLink="home">
+      <div class="w_80px">
+        <img src="../../../assets/images/ITbook.png" alt="logo" class="img-fluid">
+      </div>
+    </a>
+    @if (!toggle) {
+      <div>
+        <i class="mode fa-regular fa-sun fs-3 gold_color" (click)="darkMode()"></i>
+      </div>
+    }
+    @else {
+      <div>
+        <i class="mode fa-regular fa-moon fs-3 gold_color" (click)="lightMode()"></i>
+      </div>
+    }
+    <button class="navbar-toggler ms-auto" type="button" (click)="toggleNavbar()" [attr.aria-expanded]="isNavbarCollapsed ? 'true' : 'false'" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div [ngClass]="{'collapse': isNavbarCollapsed}" class="navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mt-md-3 mt-lg-0 ms-lg-5 mb-2 mb-lg-0">
+        <li class="nav-item me-3 mt-4 mt-md-0" routerLinkActive="border-bottom border-3 border-warning-subtle">
+          <a class="nav-link" aria-current="page" routerLinkActive="gold_color" routerLink="home" (click)="closeNavbar()">
+            <div>
+              Home
+              <i class="fa-solid fa-house-chimney fs-5 ms-1"></i>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item me-3 mt-4 mt-md-0" routerLinkActive="border-bottom border-3 border-warning-subtle">
+          <a class="nav-link" routerLinkActive="gold_color" routerLink="about" (click)="closeNavbar()">
+            <div>
+              About
+              <i class="fa-solid fa-address-card fs-5 ms-1"></i>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item me-3 mt-4 mt-md-0" routerLinkActive="border-bottom border-3 border-warning-subtle">
+          <a class="nav-link " aria-current="page" routerLinkActive="gold_color" routerLink="books" (click)="closeNavbar()">
+            <div>
+              Books
+              <i class="fa-solid fa-book-bookmark fs-5 ms-1"></i>
+            </div>
+          </a>
+        </li>
+        @if(logined)
+        {
+        <li class="nav-item me-3 mt-4 mt-md-0" routerLinkActive="border-bottom border-3 border-warning-subtle">
+          <a class="nav-link" routerLinkActive="gold_color" routerLink="favorite" (click)="closeNavbar()">
+            <div class="position-relative">
+              Favorite
+              <i class="fa-solid fa-bookmark fs-5 ms-1"></i>
+              @if (myFavoriteCount > 0) {
+                <div class="w_5px h_5px bg-warning rounded-circle pos position-absolute d-flex align-items-center justify-content-center text-white">
+                  <span>{{myFavoriteCount}}</span>
+                </div>
+              }
+            </div>
+          </a>
+        </li>
+          <li class="nav-item me-3 mt-4 mt-md-0" routerLinkActive="border-bottom border-3 border-warning-subtle">
+            <a class="nav-link" routerLinkActive="gold_color" routerLink="cart" (click)="closeNavbar()">
+              <div class="position-relative">
+                Cart
+                <i class="fa-solid fa-basket-shopping fs-5 ms-1"></i>
+                @if (myCartCount > 0) {
+                  <div class="w_5px h_5px bg-warning rounded-circle pos position-absolute d-flex align-items-center justify-content-center text-white">
+                    <span>{{myCartCount}}</span>
+                  </div>
+                }
+              </div>
+            </a>
+          </li>
+        }
+      </ul>
+      @if(!logined)
+      {
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item ms-5 ms-lg-0">
+            <a class="nav-link" aria-current="page" routerLink="register" (click)="closeNavbar()">
+            <button class="btn b gold_bg" (click)="logOut()"> SignUp</button>
+            </a>
+          <li class="nav-item ms-5 ms-lg-0">
+            <a class="nav-link" aria-current="page" routerLink="login" (click)="closeNavbar()">
+            <button class="btn b gold_bg" (click)="logOut()"> Login</button>
+            </a>
+        </ul>
+      }
+      @else{
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item mt-1 ms-auto me-4 me-lg-0 ms-lg-3">
+            <button title="Log out" class="nav-link" aria-current="page"  (click)="closeNavbar()">
+              <i class="fa-solid fa-arrow-right-from-bracket icon_hover fs-2 mx-1 gold_color" (click)="logOut()"></i>
+            </button>
+          </li>
+          <li class="nav-item mt-1 ms-3 d-none d-lg-block" (click)="soon()">
+            <button title="profile" class="nav-link border border-3 border-warning rounded-circle" routerLinkActive="text-warning">
+              <i class="icon_hover fa-solid fa-user fs-4 mx-1 gold_color"></i>
+            </button>
+          </li>
+        </ul>
+      }
+    </div>
+  </div>
+</nav>
+}

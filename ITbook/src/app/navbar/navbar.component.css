@@ -1,0 +1,37 @@
+.h_5px{
+  height: 19px;
+}
+.w_80px{
+  width: 80px;
+}
+.w_5px{
+  width: 19px;
+}
+.b:hover{
+  background-color: transparent !important;
+  color: goldenrod;
+  border: 2px solid goldenrod;
+}
+.icon_hover{
+cursor: pointer;
+&:hover{
+  color:gold !important;
+}
+}
+.d_bg_navbar{
+  background-color:var(--black_color) ;
+}
+.bg_navbar{
+  background-color:var(--dark_color) ;
+}
+.pos{
+  top:-10px !important ;
+  right: -9px !important;
+}
+.shadow_color{
+box-shadow: 0px 0px 10px 2px rgb(20, 20, 19) ;
+}
+.mode:hover{
+  color: gold !important;
+  cursor: pointer;
+}
