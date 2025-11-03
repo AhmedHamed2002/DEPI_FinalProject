@@ -38,7 +38,7 @@ TechBook-Store/
 │   │   ├── environment.ts
 │   │   └── environment.prod.ts
 └── README.md
-
+```
 ---
 
 **⚙️ Installation & Setup**
@@ -55,7 +55,8 @@ ng serve
 
 ---
 
-**🧩 Services Overview**
+## **🧩 Services Overview**
+
 🔹 DataService (src/app/services/data.service.ts)
 
 Manages the bookstore logic, including cart, favorites, mode settings, and book retrieval.
@@ -96,7 +97,8 @@ Key Methods:
 
 ---
 
-**🧰 Tech Stack**
+## **🧰 Tech Stack**
+
 Angular 18
 
 TypeScript
@@ -115,7 +117,7 @@ ITBook Store API
 
 --- 
 
-**👨‍💻 Developer**
+## **👨‍💻 Developer**
 
 Ahmed Hamed
 Frontend Developer specializing in Angular & Next js 
